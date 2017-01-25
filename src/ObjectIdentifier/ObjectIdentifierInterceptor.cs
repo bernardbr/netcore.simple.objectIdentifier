@@ -6,7 +6,7 @@ namespace NetCore.Simple.ObjectIdentifier
     /// <summary>
     /// The interceptor of <see cref="ObjectIdentifier"/>.
     /// </summary>
-    internal sealed class ObjectIdentifierInterceptor : DispatchProxy
+    public class ObjectIdentifierInterceptor : DispatchProxy
     {
         /// <summary>
         /// The identifiers of target object.

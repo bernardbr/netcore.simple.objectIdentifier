@@ -5,12 +5,21 @@
     "command": "dotnet",
     "isShellCommand": true,
     "args": [],
-    "tasks": [
-        {
+    "tasks": [{
             "taskName": "build",
-            "args": [ ],
+            "args": [
+                "src/ObjectIdentifier/project.json",
+                "test/ObjectIdentifier.Test/project.json"
+            ],
             "isBuildCommand": true,
             "showOutput": "silent",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "test",
+            "args": ["test/ObjectIdentifier.Test/project.json"],
+            "isTestCommand": true,
+            "showOutput": "always",
             "problemMatcher": "$msCompile"
         }
     ]
