@@ -10,6 +10,8 @@ namespace ObjectIdentifier.Test
         public void ShoudBeCreatedAnObjectThroughObjectIdentifier()
         {
             IPerson person = ObjectIdentifier.Get<IPerson>(new { Id = 1 });
+            Assert.NotNull(person);
+            Assert.IsType<IPerson>(person);
         }
     }
 }
