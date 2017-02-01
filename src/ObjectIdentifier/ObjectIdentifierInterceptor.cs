@@ -21,7 +21,7 @@ namespace NetCore.Simple.ObjectIdentifier
         /// <returns>The real object.</returns>
         protected override object Invoke(MethodInfo targetMethod, object[] args)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("Temporary exception.");
         }
 
         /// <summary>
