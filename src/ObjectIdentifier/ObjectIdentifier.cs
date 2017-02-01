@@ -20,5 +20,11 @@ namespace NetCore.Simple.ObjectIdentifier
             (proxy as ObjectIdentifierInterceptor).SetIdentifiers(identifiers);
             return proxy;
         }
+
+        public static void Register<TInterface>(Func<object, TInterface> getByIdentifiersMethod)
+            where TInterface : class
+        {
+            ObjectIdentifierHelper.Register<TInterface>(getByIdentifiersMethod);
+        }
     }
 }

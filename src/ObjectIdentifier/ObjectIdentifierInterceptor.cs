@@ -21,6 +21,12 @@ namespace NetCore.Simple.ObjectIdentifier
         /// <returns>The real object.</returns>
         protected override object Invoke(MethodInfo targetMethod, object[] args)
         {
+            Func<object, object> fn;
+            if (ObjectIdentifierHelper.GetRegistration(targetMethod.DeclaringType, out fn))
+            {
+                return fn(this.identifiers);
+            }
+
             throw new NotImplementedException("Temporary exception.");
         }
 
