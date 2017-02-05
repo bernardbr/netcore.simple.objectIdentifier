@@ -1,4 +1,4 @@
-namespace ObjectIdentifier.Test.TestObjects
+namespace ObjectIdentifier.Test.TestObjects.Model
 {
     public interface IDog
     {

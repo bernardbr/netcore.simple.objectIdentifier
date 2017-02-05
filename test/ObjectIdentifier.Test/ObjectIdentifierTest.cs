@@ -1,6 +1,8 @@
 namespace ObjectIdentifier.Test
 {
-    using ObjectIdentifier.Test.TestObjects;
+    using ObjectIdentifier.Test.TestObjects.Model;
+    using ObjectIdentifier.Test.TestObjects.Provider;
+    using ObjectIdentifier.Test.TestObjects.Exceptions;
     using NetCore.Simple.ObjectIdentifier;
     using System;
     using NUnit.Framework;
@@ -31,24 +33,36 @@ namespace ObjectIdentifier.Test
         [Test]
         public void ShouldBeThrowAnExpecificExceptionSettedOnGetByIdMethod()
         {
-            IDog dog = ObjectIdentifier.Get<IDog>(new { Identifier = 1 });
-            Assert.NotNull(dog);
-            Assert.IsInstanceOf<IDog>(dog);
-            var name = string.Empty;            
+            ICat cat = ObjectIdentifier.Get<ICat>(new { Identifier = 1 });
+            Assert.NotNull(cat);
+            Assert.IsInstanceOf<ICat>(cat);
+            var name = string.Empty;
             Assert.Throws(
                 Is.
                 InstanceOf<ExpecificException>(),
                 () =>
                 {
-                    name = dog.Name;
+                    name = cat.Name;
                 }
             );
         }
 
+        [Test]
+        public void ShouldBeGetAnObjectSettedOnGetByIdMethod()
+        {
+            // TODO: It's not still works. I need store the real object when a different property than Identifiers is called.
+            IDog dog = ObjectIdentifier.Get<IDog>(1);
+            Assert.NotNull(dog);
+            Assert.IsInstanceOf<IDog>(dog);
+            Assert.AreEqual("Marley", dog.Name);
+        }
+
+
         [OneTimeSetUp]
         public void TestFixtureInitializer()
         {
-            ObjectIdentifier.Register<IDog>(DogGetter.GetById);
+            ObjectIdentifier.Register<ICat>(CatProvider.GetById);
+            ObjectIdentifier.Register<IDog>(DogProvider.GetById);
         }
     }
 }

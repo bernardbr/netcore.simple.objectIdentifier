@@ -1,6 +1,6 @@
 using System;
 
-namespace ObjectIdentifier.Test.TestObjects
+namespace ObjectIdentifier.Test.TestObjects.Exceptions
 {
     public class ExpecificException : Exception
     {
