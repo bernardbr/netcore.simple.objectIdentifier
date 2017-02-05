@@ -1,0 +1,10 @@
+os: Visual Studio 2015
+version: '{branch}.0.{build}'
+build_script:
+  - build.cmd
+clone_depth: 1
+test: off
+deploy: off
+artifacts:
+  - path: src/NetCore.Simple.ObjectIdentifier/bin/Release/*.nupkg
+    name: NetCore.Simple.ObjectIdentifier

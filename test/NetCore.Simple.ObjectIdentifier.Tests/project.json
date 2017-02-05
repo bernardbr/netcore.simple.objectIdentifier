@@ -2,11 +2,10 @@
     "version": "1.0.0-*",
     "testRunner": "nunit",
     "dependencies": {
-        "dotnet-test-xunit": "2.2.0-preview2-build1029",
         "NUnit": "3.6.0",
         "NUnit.Runners": "3.6.0",
         "dotnet-test-nunit": "3.4.0-beta-3",
-        "ObjectIdentifier": {
+        "NetCore.Simple.ObjectIdentifier" : {
             "target": "project"
         }
     },
@@ -21,11 +20,9 @@
         }
     },
     "buildOptions": {
-        "copyToOutput": {
-            "include": ["xunit.runner.json"]
-        }
+        "debugType": "portable"
     },
     "tooling": {
-        "defaultNamespace": "ObjectIdentifier.Test"
+        "defaultNamespace": "NetCore.Simple.ObjectIdentifier.Tests"
     }
 }

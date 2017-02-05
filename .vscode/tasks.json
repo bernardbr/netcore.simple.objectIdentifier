@@ -8,8 +8,8 @@
     "tasks": [{
             "taskName": "build",
             "args": [
-                "src/ObjectIdentifier/project.json",
-                "test/ObjectIdentifier.Test/project.json"
+                "src/NetCore.Simple.ObjectIdentifier/project.json",
+                "test/NetCore.Simple.ObjectIdentifier.Tests/project.json"
             ],
             "isBuildCommand": true,
             "showOutput": "silent",
@@ -17,7 +17,7 @@
         },
         {
             "taskName": "test",
-            "args": ["test/ObjectIdentifier.Test/project.json"],
+            "args": ["test/NetCore.Simple.ObjectIdentifier.Tests/project.json"],
             "isTestCommand": true,
             "showOutput": "always",
             "problemMatcher": "$msCompile"
