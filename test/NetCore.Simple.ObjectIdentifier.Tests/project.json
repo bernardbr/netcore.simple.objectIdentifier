@@ -20,7 +20,7 @@
         }
     },
     "buildOptions": {
-        "debugType": "portable"
+        "debugType": "full"
     },
     "tooling": {
         "defaultNamespace": "NetCore.Simple.ObjectIdentifier.Tests"

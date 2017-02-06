@@ -269,3 +269,4 @@ __pycache__/
 .DS_Store
 coverage/
 testrunner/
+coverage.xml
