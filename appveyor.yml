@@ -1,5 +1,8 @@
 os: Visual Studio 2015
 version: '{branch}.0.{build}'
+environment:
+  COVERALLS_REPO_TOKEN:
+    secure: zD+GQJ7l3fpqQgvKM7qOOXBprbzVwxVtWLam6ZsK6ILUzrLWiom/CyU8+ppZAodB
 build_script:
   - build.cmd
 clone_depth: 1
@@ -8,3 +11,10 @@ deploy: off
 artifacts:
   - path: src/NetCore.Simple.ObjectIdentifier/bin/Release/*.nupkg
     name: NetCore.Simple.ObjectIdentifier
+test_script:
+- cmd: >-
+  nuget install coveralls.net -Version 0.7.0 -OutputDirectory coverage
+
+  .\coverage\OpenCover.4.6.519\tools\OpenCover.Console.exe -target:dotnet test -targetargs:"test\NetCore.Simple.ObjectIdentifier.Tests" -filter:"+[*]* -[*.Test]*" -register:user
+
+  .\coverage\coveralls.net.0.7.0\tools\csmacnz.Coveralls.exe --opencover -i .\results.xml
