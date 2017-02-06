@@ -1,5 +1,3 @@
-nuget install NUnit.Runners -Version 3.6.0 -OutputDirectory testrunner
-nuget install NUnit.Framework -OutputDirectory testrunner
 nuget install OpenCover -Version 4.6.519 -OutputDirectory coverage
 nuget install coveralls.net -Version 0.6.0 -OutputDirectory coverage
 dotnet restore .\test\NetCore.Simple.ObjectIdentifier.Tests\
