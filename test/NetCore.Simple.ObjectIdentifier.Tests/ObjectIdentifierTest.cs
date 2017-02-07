@@ -6,6 +6,8 @@ namespace ObjectIdentifier.Test
     using NetCore.Simple.ObjectIdentifier;
     using System;
     using NUnit.Framework;
+    using NetCore.Simple.ObjectIdentifier.Tests.TestObjects.Model;
+    using NetCore.Simple.ObjectIdentifier.Tests.TestObjects.Provider;
 
     [TestFixture]
     public class ObjectIdentifierTest
@@ -19,10 +21,10 @@ namespace ObjectIdentifier.Test
             var name = string.Empty;
             Assert.Throws(
                 Is.
-                InstanceOf<NotImplementedException>().
+                InstanceOf<Exception>().
                 And.
                 Message.
-                EqualTo("Temporary exception."),
+                EqualTo("The interface is not registred."),
                 () =>
                 {
                     name = person.Name;
@@ -57,12 +59,31 @@ namespace ObjectIdentifier.Test
             Assert.AreEqual("Marley", dog.Name);
         }
 
+        [Test]
+        public void ShouldBeGetAnIdentifiersValuesWithoutCallTheProvider()
+        {
+            IRabbit rabbit = ObjectIdentifier.Get<IRabbit>(new { Identifier1 = 1, Identifier2 = 2 });
+            Assert.NotNull(rabbit);
+            Assert.IsInstanceOf<IRabbit>(rabbit);
+            Assert.DoesNotThrow(() => Assert.AreEqual(1, rabbit.Identifier1));
+            Assert.DoesNotThrow(() => Assert.AreEqual(2, rabbit.Identifier2));
+            string name = string.Empty;
+            Assert.Throws(
+                Is.
+                InstanceOf<NotImplementedException>().
+                And.
+                Message.
+                EqualTo("It's always throws."),
+                () => name = rabbit.Name);
+        }
+
 
         [OneTimeSetUp]
         public void TestFixtureInitializer()
         {
             ObjectIdentifier.Register<ICat>(CatProvider.GetById);
             ObjectIdentifier.Register<IDog>(DogProvider.GetById);
+            ObjectIdentifier.Register<IRabbit>(RabbitProvider.GetById);
         }
     }
 }

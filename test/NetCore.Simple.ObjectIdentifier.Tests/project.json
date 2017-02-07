@@ -5,6 +5,7 @@
         "NUnit": "3.6.0",
         "NUnit.Runners": "3.6.0",
         "dotnet-test-nunit": "3.4.0-beta-3",
+        "Moq": "4.6.38-alpha",
         "NetCore.Simple.ObjectIdentifier" : {
             "target": "project"
         }
@@ -20,7 +21,7 @@
         }
     },
     "buildOptions": {
-        "debugType": "full"
+        "debugType": "portable"
     },
     "tooling": {
         "defaultNamespace": "NetCore.Simple.ObjectIdentifier.Tests"

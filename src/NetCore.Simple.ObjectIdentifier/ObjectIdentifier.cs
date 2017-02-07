@@ -8,6 +8,11 @@ namespace NetCore.Simple.ObjectIdentifier
     /// </summary>
     public static class ObjectIdentifier
     {
+        /// <summary>
+        /// Gets an ObjectIdentifier for the Interafce Type.
+        /// </summary>
+        /// <param name="identifiers">The identifiers of object.</param>
+        /// <returns>The object identifier.</returns>
         public static TInterface Get<TInterface>(object identifiers)
             where TInterface : class
         {
@@ -21,6 +26,10 @@ namespace NetCore.Simple.ObjectIdentifier
             return proxy;
         }
 
+        /// <summary>
+        /// Register the interface and the method for get an object that implements the interface.
+        /// </summary>
+        /// <param name="getByIdentifiersMethod">The method who gets the real object.</param>
         public static void Register<TInterface>(Func<object, TInterface> getByIdentifiersMethod)
             where TInterface : class
         {
